@@ -228,3 +228,55 @@ defmodule OptimizedFib do
 ## getNumber(1, 55, 34) -> getNumber(0, 89, 55)  # 2 getNumber(0, _, result)
 ## getNumber(0, 89, 55) -> 55
 end
+
+defmodule Enumerate do
+    #  each, map, filter and reduce and comprehension
+    def main do
+        list = [1, 2, 3, 4, 5, 6, 7, 8] 
+        enum_each(list)
+
+        # Enum
+        IO.inspect enum_map(list)
+        IO.inspect enum_filter(list)
+        IO.inspect enum_reduce(list)
+        IO.inspect enum_reduce(list, 0)
+        IO.inspect enum_reduce(list, 10)
+    
+        # Comprehension
+        IO.inspect comprehension_pow(list)
+        IO.inspect comprehension(list)
+        table = multiplication_table(5)
+    end
+
+    defp comprehension(list) do
+        for x <- [1, 2, 3], y <- [4, 5, 6], do: {x, y, x*y}
+    end
+
+    defp multiplication_table(size) do
+        for x <- 1..size, y <- 1..size, into: %{}, do: {{x, y}, x*y}
+    end
+    
+    defp comprehension_pow(list) do
+        for x <- list, do: x * x  # pow
+    end
+
+    defp enum_each(list) do
+        Enum.each(list, fn x -> IO.puts(x) end)
+    end
+
+    defp enum_map(list) do
+        Enum.map(list, fn x -> 2 * x end)
+    end
+
+    defp enum_filter(list) do
+        Enum.filter(list, fn x -> rem(x, 2) == 1 end)
+    end
+
+    defp enum_reduce(list, start) do
+        Enum.reduce(list, start, fn x, y -> x + y end)
+    end
+
+    defp enum_reduce(list) do
+        Enum.reduce(list, 0, fn x, y -> x + y end)
+    end
+end
