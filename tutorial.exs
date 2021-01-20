@@ -156,3 +156,75 @@ defmodule With do
     defp extract_password(%{"password" => password}), do: {:ok, password}
     defp extract_password(_), do: {:error, "Missing password"}
 end
+
+
+defmodule Recursion do
+    # Module to learn how looping and recusrion works
+    def main do
+        # Looping 10 times and print number
+        print(10)
+
+        # Recursion to sum elemenets on list
+        IO.puts "Sum elem on list: #{sum([1, 2, 3, 4, 5])}"
+    
+
+    end
+
+    def print(0), do: :ok
+    def print(n) do
+        print(n - 1)
+        IO.puts(n)
+    end
+
+    def sum([]), do: 0
+    def sum([head|tail]), do: head + sum(tail)
+end
+
+
+defmodule Fib do
+    # Standard solution to find fibbonaci number
+    def main, do: main(10)  # default value
+    def main(n) do
+        start = :os.system_time(:seconds)
+        fib = getNumber(n)
+        finish = :os.system_time(:seconds)
+        diff = finish - start
+        IO.puts "Result: #{fib}"
+        IO.puts "Time: #{diff}"
+    end
+
+    def getNumber(0), do: 0
+    def getNumber(1), do: 1
+    def getNumber(n), do: getNumber(n-1) + getNumber(n-2)
+end
+
+
+defmodule OptimizedFib do
+    # Elixir Way to optimize fibbonaci
+    def main, do: main(10)  # default value
+    def main(n) do
+        start = :os.system_time(:seconds)
+        fib = getNumber(n)
+        finish = :os.system_time(:seconds)
+        diff = finish - start
+        IO.puts "Result: #{fib}"
+        IO.puts "Time: #{diff}"
+    end
+
+    def getNumber(n) when n < 0, do: :error  # 0
+    def getNumber(n), do: getNumber(n, 1, 0)  # 1
+    def getNumber(0, _, result), do: result  # 2
+    def getNumber(n, next, result), do: getNumber(n - 1, next + result, next)  # 3
+
+## getNumber(10) -> getNumber(10, 1, 0)  # 1
+## getNumber(9, 1, 1) -> getNumber(8, 2, 1)  # 3
+## getNumber(8, 2, 1) -> getNumber(7, 3, 2)  # 3
+## getNumber(7, 3, 2) -> getNumber(6, 5, 3)  # 3
+## getNumber(6, 5, 3) -> getNumber(5, 8, 5)  # 3 
+## getNumber(5, 8, 5) -> getNumber(4, 13, 8)  # 3
+## getNumber(4, 13, 8) -> getNumber(3, 21, 13)  # 3
+## getNumber(3, 21, 13) -> getNumber(2, 34, 21)  # 3
+## getNumber(2, 34, 21) -> getNumber(1, 55, 34)  # 3
+## getNumber(1, 55, 34) -> getNumber(0, 89, 55)  # 2 getNumber(0, _, result)
+## getNumber(0, 89, 55) -> 55
+end
