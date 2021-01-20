@@ -125,12 +125,20 @@ end
 
 defmodule With do
     # module to practiseWith Clause
+    # tricki way to valid date
     def main() do
         valid_data = %{
             "login" => "Some login",
             "email" => "Some email",
+            "password" => "Some password"
             }
-        extract_user(valid_data)
+        IO.inspect extract_user(valid_data)
+        invalid_data = %{
+            "email" => "Some email",
+            "password" => "Some password"
+            }
+        IO.inspect extract_user(invalid_data)
+        :ok
     end
 
     def extract_user(user) do
