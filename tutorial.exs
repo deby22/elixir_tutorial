@@ -32,6 +32,41 @@ defmodule Functions do
     def short_basic_sum(a, b), do: a + b
 end
 
+defmodule PatternMatching do
+    # module to learn how PatternMatching works
+    def main do
+        {name, age} = {"Dawid", 27}
+        IO.puts "Name: #{name}\t Age: #{age}"
+
+        {_, time} = :calendar.local_time()
+        {hour, min, sec} = time
+        IO.puts "Just time: #{hour} #{min} #{sec}"
+
+        [1, x, y] = [1, 2, 3]
+        IO.puts "X: #{x}\t Y: #{y}"
+
+        # split list by first elem and other elements
+        [head|tail] = [1, 2, 3, 4, 5]  # similar to pop first elem
+        IO.puts "Head: #{head}"
+        IO.inspect tail, char_lists: :as_lists
+
+        # min value
+        [min | _] = Enum.sort([4, 3, 5, 1, 2])
+        IO.puts "Min: #{min}"
+
+        # PatternMatching of function
+        IO.puts "Rectangle #{area({:rectangle, 10, 20})}"
+        IO.puts "Square #{area({:square, 10})}"
+        IO.puts "Circle #{area({:circle, 20})}"
+        IO.puts "Unknown #{area({:triangle, 10, 20})}"
+    end
+
+    def area({:rectangle, a, b}), do: a * b
+    def area({:square, a}), do: a * a
+    def area({:circle, r}), do: r * r * 3.14159
+    def area(_), do: :unkown
+end
+
 
 defmodule Guards do
 
