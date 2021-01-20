@@ -67,8 +67,40 @@ defmodule PatternMatching do
     def area(_), do: :unkown
 end
 
+defmodule Condition do
+    def main do
+        IO.puts "If usage #{max_with_if(10, 20)}"
+        IO.puts "Unless usage #{max_with_unless(10, 20)}"
+        IO.puts "Cond usage #{max_with_cond(10, 20)}"
+        IO.puts "Case usage #{max_with_case(10, 20)}"
+
+    end
+    
+    def max_with_if(a, b) do
+        if a >= b, do: a, else: b
+    end
+    def max_with_unless(a, b) do
+        unless a >= b, do: b, else: a
+    end
+
+    def max_with_cond(a, b) do
+        cond do
+            a >= b -> a
+            true -> b
+        end
+    end
+
+    def max_with_case(a, b) do
+        case a >= b do
+            true -> a
+            false -> b
+        end
+    end
+end
+
 
 defmodule Guards do
+    # Module to understand Guards
     def main do
         # normal usage
         IO.puts "10: #{test(10)} \t -10: #{test(-10)} \t 0: #{test(0)} \t Invalid: #{test(:invalid)}"
@@ -79,7 +111,7 @@ defmodule Guards do
             0 -> :zero
             x when is_number(x) and x > 0 -> :positive
             _ -> :invalid
-        end]
+        end
         IO.puts "10: #{test.(10)} \t -10: #{test.(-10)} \t 0: #{test.(0)} \t Invalid: #{test.(:invalid)}"
 
     end
@@ -89,7 +121,6 @@ defmodule Guards do
     def test(x) when is_number(x) and x > 0, do: :positive
     def test(_), do: :invalid
 end
-
 
 
 defmodule With do
