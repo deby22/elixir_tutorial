@@ -69,7 +69,31 @@ end
 
 
 defmodule Guards do
+    def main do
+        # normal usage
+        IO.puts "10: #{test(10)} \t -10: #{test(-10)} \t 0: #{test(0)} \t Invalid: #{test(:invalid)}"
+    
+        # lambda usage
+        test = fn
+            x when is_number(x) and x < 0 -> :negative
+            0 -> :zero
+            x when is_number(x) and x > 0 -> :positive
+            _ -> :invalid
+        end]
+        IO.puts "10: #{test.(10)} \t -10: #{test.(-10)} \t 0: #{test.(0)} \t Invalid: #{test.(:invalid)}"
 
+    end
+
+    def test(x) when is_number(x) and x < 0, do: :negative
+    def test(0), do: :zero
+    def test(x) when is_number(x) and x > 0, do: :positive
+    def test(_), do: :invalid
+end
+
+
+
+defmodule With do
+    # module to practiseWith Clause
     def main() do
         valid_data = %{
             "login" => "Some login",
