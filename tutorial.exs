@@ -14,9 +14,22 @@ end
 
 
 defmodule Functions do
+    # module to learn functions
     def main do
-        
+        anonymous_sum = fn(a, b) -> a + b end
+        short_anonymous_sum = &(&1 + &2) 
+
+        IO.puts "Basic usage: #{basic_sum(1, 2)}"
+        IO.puts "Short version of basic usage: #{short_basic_sum(1, 2)}"
+        IO.puts "Annonymous version:  #{anonymous_sum.(1, 2)}"
+        IO.puts "Short version of annonymous:  #{short_anonymous_sum.(1, 2)}"
+
     end
+
+    def basic_sum(a, b) do
+        a + b
+    end
+    def short_basic_sum(a, b), do: a + b
 end
 
 
