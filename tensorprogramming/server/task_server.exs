@@ -11,7 +11,7 @@ defmodule Main do
 
         # set name to process
         Process.register(pid, :task_server)
-        :task_server |> TaskServer.get_tasks(entry_date)
+        :task_server |> TaskServer.get_tasks(entry.date)
     end
 end
 
