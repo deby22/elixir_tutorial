@@ -1,4 +1,4 @@
-defmodule TestSolution do
+defmodule TestTotalPoints do
   use ExUnit.Case
 
   test "returns the correct points total" do
