@@ -1,6 +1,6 @@
 # TaskList
 # Exercise to learn about Data Abstraction, Function Pipeing and Structs
-# Based on: https://youtu.be/CyUWWYKFe60
+# Based on: https://youtu.be/39UA4jiaq0Q
 
 defmodule Main do
     def main do
