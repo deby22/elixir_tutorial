@@ -229,6 +229,7 @@ defmodule OptimizedFib do
 ## getNumber(0, 89, 55) -> 55
 end
 
+
 defmodule Enumerate do
     #  each, map, filter and reduce and comprehension
     def main do
@@ -254,6 +255,7 @@ defmodule Enumerate do
 
     defp multiplication_table(size) do
         for x <- 1..size, y <- 1..size, into: %{}, do: {{x, y}, x*y}
+        # for x <- 1..size, y <- 1..size, do: {{x, y}, x*y}  # list of tuple
     end
     
     defp comprehension_pow(list) do
