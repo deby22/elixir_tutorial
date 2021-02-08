@@ -1,51 +1,52 @@
-defmodule RomanNumbersTest do
+import ArabicToRoman, only: [solution: 1]
+
+defmodule TestArabicToRoman do
   use ExUnit.Case
 
-  test "test simple roman numbers", context do
-    assert RomanNumbers.run(1) == "I"
-    assert RomanNumbers.run(2) == "II"
-    assert RomanNumbers.run(3) == "III"
-    assert RomanNumbers.run(4) == "IV"
-    assert RomanNumbers.run(5) == "V"
-    assert RomanNumbers.run(6) == "VI"
-    assert RomanNumbers.run(7) == "VII"
-    assert RomanNumbers.run(8) == "VIII"
-    assert RomanNumbers.run(9) == "IX"
-    assert RomanNumbers.run(10) == "X"
-    assert RomanNumbers.run(11) == "XI"
-    assert RomanNumbers.run(12) == "XII"
-    assert RomanNumbers.run(13) == "XIII"
-    assert RomanNumbers.run(14) == "XIV"
-    assert RomanNumbers.run(15) == "XV"
-    assert RomanNumbers.run(16) == "XVI"
-    assert RomanNumbers.run(17) == "XVII"
-    assert RomanNumbers.run(18) == "XVIII"
-    assert RomanNumbers.run(19) == "XIX"
-    assert RomanNumbers.run(20) == "XX"
-    assert RomanNumbers.run(20) == "XX"
-    assert RomanNumbers.run(21) == "XXI"
-    assert RomanNumbers.run(22) == "XXII"
-    assert RomanNumbers.run(23) == "XXIII"
-    assert RomanNumbers.run(24) == "XXIV"
-    assert RomanNumbers.run(25) == "XXV"
-    assert RomanNumbers.run(26) == "XXVI"
-    assert RomanNumbers.run(27) == "XXVII"
-    assert RomanNumbers.run(28) == "XXVIII"
-    assert RomanNumbers.run(29) == "XXIX"
-    assert RomanNumbers.run(30) == "XXX"
-    assert RomanNumbers.run(40) == "XL"
-    assert RomanNumbers.run(49) == "XLIX"
-    assert RomanNumbers.run(50) == "L"
-    assert RomanNumbers.run(60) == "LX"
-    assert RomanNumbers.run(70) == "LXX"
-    assert RomanNumbers.run(80) == "LXXX"
-    assert RomanNumbers.run(85) == "LXXXV"
-    assert RomanNumbers.run(89) == "LXXXIX"
-    assert RomanNumbers.run(91) == "XCI"
-    assert RomanNumbers.run(93) == "XCIII"
-    assert RomanNumbers.run(95) == "XCV"
-    assert RomanNumbers.run(98) == "XCVIII"
-    assert RomanNumbers.run(99) == "XCIX"
-    assert RomanNumbers.run(100) == "C"
+  test "converts from arabic to roman" do
+    Enum.each([
+      {1, "I"},
+      {2, "II"},
+      {3, "III"},
+      {4, "IV"},
+      {5, "V"},
+      {6, "VI"},
+      {7, "VII"},
+      {8, "VIII"},
+      {9, "IX"},
+      {10, "X"},
+      {11, "XI"},
+      {12, "XII"},
+      {13, "XIII"},
+      {14, "XIV"},
+      {15, "XV"},
+      {16, "XVI"},
+      {19, "XIX"},
+      {20, "XX"},
+      {21, "XXI"},
+      {40, "XL"},
+      {49, "XLIX"},
+      {50, "L"},
+      {90, "XC"},
+      {99, "XCIX"},
+      {100, "C"},
+      {101, "CI"},
+      {144, "CXLIV"},
+      {470, "CDLXX"},
+      {578, "DLXXVIII"},
+      {500, "D"},
+      {501, "DI"},
+      {1000, "M"},
+      {1001, "MI"},
+      {1002, "MII"},
+      {2000, "MM"},
+      {1111, "MCXI"},
+      {1666, "MDCLXVI"},
+      {1673, "MDCLXXIII"},
+      {1990, "MCMXC"}
+    ], fn({number, expected}) ->
+      assert solution(number) == expected
+    end)
+
   end
 end
