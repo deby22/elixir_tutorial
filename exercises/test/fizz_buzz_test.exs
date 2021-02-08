@@ -42,4 +42,7 @@ defmodule FizzBuzzTest do
   test "test fizzbuzz by guards", context do
     assert FizzBuzzByGuards.fizz_buzz(15) == context[:expected_result]
   end
+  test "test fizzbuzz by if", context do
+    assert FizzBuzzByIf.fizz_buzz(15) == context[:expected_result]
+  end
 end
