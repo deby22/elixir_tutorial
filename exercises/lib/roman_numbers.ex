@@ -9,7 +9,6 @@ defmodule RomanNumbers do
     # ends
     |> String.replace("IIII", "IV")
     |> String.replace("VIV", "IX")
-    |> String.replace("VIV", "XXXX")
     |> String.replace("LXXXX", "XC")
     |> String.replace("XXXX", "XL")
   end
