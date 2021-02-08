@@ -1,9 +1,9 @@
 defmodule FizzBuzzByCond do
   def fizz_buzz(n) do
-    Enum.map(1..n, &helper/1)
+    Enum.map(1..n, &replace_word/1)
   end
 
-  defp helper(n) do
+  defp replace_word(n) do
     cond do
       rem(n, 15) == 0 -> "fizzbuzz"
       rem(n, 3) == 0 -> "fizz"
