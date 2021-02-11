@@ -16,7 +16,8 @@ defmodule ArabicToRoman do
     |> String.replace("CCCC", "CD")
     |> String.replace("DCCCC", "CM")
     |> String.replace("DCD", "CM")
-    end
-    #
-    # MCMXC
+  end
+
+  #
+  # MCMXC
 end
