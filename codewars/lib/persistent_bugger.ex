@@ -5,7 +5,6 @@ defmodule PersistentBugger do
   def persistence(x, n) do
     n =
       n
-      |> IO.inspect()
       |> Integer.digits()
       |> Enum.reduce(fn x, acc -> x * acc end)
 

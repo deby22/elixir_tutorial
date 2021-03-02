@@ -13,7 +13,6 @@ defmodule ScreenLocking do
   def count_patterns_from(graph, current, len) do
     nodes = Map.get(graph, current, [])
     graph = remove_node(graph, current)
-    IO.inspect({current, nodes}, label: "after")
     Enum.map(nodes, fn x -> count_patterns_from(graph, x, len - 1) end) |> Enum.sum()
   end
 

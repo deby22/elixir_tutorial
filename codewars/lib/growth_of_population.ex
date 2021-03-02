@@ -4,8 +4,6 @@ defmodule Growth do
   def do_nb_year(years, p0, _, _, p) when p0 >= p, do: years
 
   def do_nb_year(years, p0, percent, aug, p) do
-    IO.inspect({years, p0, percent, aug, p})
-
     do_nb_year(
       years + 1,
       trunc(p0 + p0 * (percent / 100)) + aug,
