@@ -23,5 +23,7 @@ defmodule MyList do
   def caesar([head|tail], n) when head + n <= ?z, do: [head+n, caesar(tail, n)]
   def caesar([head|tail], n), do: [head+n-26, caesar(tail, n)]
 
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [from | span(from+1,to)]
     
 end
