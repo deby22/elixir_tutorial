@@ -35,4 +35,11 @@ defmodule ListAndRecursion do
   def flatten([]), do: []
   def flatten([head|tail]), do: flatten(head) ++ flatten(tail)
   def flatten(head), do: [head]
+
+
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [from | span(from+1, to)]
+  def primes(n) do
+    range -- for a <- range, b <- range, a <= b, a*b <= n, do: a*b
+  end
 end
