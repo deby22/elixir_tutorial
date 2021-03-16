@@ -2,8 +2,8 @@ defmodule Stack.Server do
   use GenServer
 
   # Client
-  def start_link(init_state) do
-    GenServer.start_link(__MODULE__, init_state, name: __MODULE__)
+  def start_link(_) do
+    GenServer.start_link(__MODULE__, nil, name: __MODULE__)
   end
 
   def pop do
@@ -15,9 +15,12 @@ defmodule Stack.Server do
   end
 
   # Server
+  def init(_) do
+    {:ok, Stack.Stash.get()}
+  end
+
   def terminate(reason, stack) do
-    IO.puts("Reason: #{reason} \t\tStack#{stack}")
-    :normal
+    Stack.Stash.update(stack)
   end
 
   def handle_call(:pop, _from, [element | stack]) do
@@ -25,6 +28,7 @@ defmodule Stack.Server do
   end
 
   def handle_cast({:push, value}, stack) do
+    if is_integer(value) and value < 10, do: exit(:kill)
     {:noreply, [value | stack]}
   end
 end

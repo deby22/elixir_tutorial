@@ -10,12 +10,13 @@ defmodule Stack.Application do
     children = [
       # Starts a worker by calling: Stack.Worker.start_link(arg)
       # {Stack.Worker, arg}
+      {Stack.Stash, []},
       {Stack.Server, [1, "cat", 2, "dog"]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Stack.Supervisor]
+    opts = [strategy: :rest_for_one, name: Stack.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
