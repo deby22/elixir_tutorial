@@ -8,4 +8,8 @@ defmodule Stack.Server do
   def handle_call(:pop, _from, [element | stack]) do
     {:reply, element, stack}
   end
+
+  def handle_cast({:push, value}, stack) do
+    {:noreply, [value | stack]}
+  end
 end
